@@ -1,9 +1,11 @@
-##Coinbase List
+## Coinbase List
 
 
 ##### This projects displays a list of Coinbase products with the last 24hs stats.
 
-##Available commands: 
+---
+
+### Available commands: 
 
 - Dev environment: `yarn start`
 

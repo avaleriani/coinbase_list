@@ -13,3 +13,5 @@
 
 - Run tests: `yarn test`
 
+- Deploy to gh pages: `yarn deploy`
+

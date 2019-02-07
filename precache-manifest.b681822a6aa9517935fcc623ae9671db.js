@@ -8,19 +8,19 @@ self.__precacheManifest = [
     "url": "/coinbase_list/static/js/runtime~main.f1ae8809.js"
   },
   {
-    "revision": "126ff8364a18736d2ccd",
-    "url": "/coinbase_list/static/js/main.126ff836.chunk.js"
+    "revision": "00292e4d838e98f02a4a",
+    "url": "/coinbase_list/static/js/main.00292e4d.chunk.js"
   },
   {
     "revision": "5f170cdca40a21687404",
     "url": "/coinbase_list/static/js/1.5f170cdc.chunk.js"
   },
   {
-    "revision": "126ff8364a18736d2ccd",
-    "url": "/coinbase_list/static/css/main.ce679a45.chunk.css"
+    "revision": "00292e4d838e98f02a4a",
+    "url": "/coinbase_list/static/css/main.eacef01b.chunk.css"
   },
   {
-    "revision": "77879ff72a6d4c710e7ec31184487472",
+    "revision": "858c319635736bfbdf49eee0470c8c36",
     "url": "/coinbase_list/index.html"
   }
 ];

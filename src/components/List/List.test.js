@@ -2,6 +2,7 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import List from './List';
 import renderer from 'react-test-renderer';
+import { mount, shallow } from "enzyme";
 
 const data =
   [{
@@ -40,7 +41,7 @@ const data =
     "accessible": true
   }];
 
-it('renders when empty', () => {
+it('renders when no props', () => {
   const div = document.createElement('div');
   ReactDOM.render(<List/>, div);
   ReactDOM.unmountComponentAtNode(div);
@@ -48,9 +49,21 @@ it('renders when empty', () => {
 
 test('Component matches snapshot', () => {
   const component = renderer.create(
-    <List data={data}/>
+    <List data={ data }/>
   );
   let tree = component.toJSON();
   expect(tree).toMatchSnapshot();
-
 });
+
+it('shows spinner only when loading', () => {
+  const wrapper = mount(<List data={ data }/>);
+
+  wrapper.setState({ allLoaded: true });
+  expect(wrapper.state('allLoaded')).toEqual(true);
+  expect(wrapper.exists('.spinner')).toEqual(false);
+
+  wrapper.setState({ allLoaded: false });
+  expect(wrapper.state('allLoaded')).toEqual(false);
+  expect(wrapper.exists('.spinner')).toEqual(true);
+});
+

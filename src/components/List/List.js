@@ -16,6 +16,9 @@ class List extends Component {
     this.getStatsFromProducts(this.props.data);
   }
 
+  //This function iterates over each product and call the api for getting the stats
+  //every 300ms to not get the 429 too many request error. Then updates the state every
+  //time a response is achieved.
   async getStatsFromProducts(products) {
     const originalContext = this;
     let genObj = genFunc();
@@ -70,12 +73,12 @@ class List extends Component {
 
     return (
       <Fragment>
-        <td>{ open || open === 0 ? open : <Spinner/> }</td>
-        <td>{ high || high === 0 ? high : <Spinner/> }</td>
-        <td>{ low || low === 0 ? low : <Spinner/> }</td>
-        <td>{ volume || volume === 0 ? volume : <Spinner/> }</td>
-        <td>{ last || last === 0 ? last : <Spinner/> }</td>
-        <td>{ volume_30day || volume_30day === 0 ? volume_30day : <Spinner/> }</td>
+        <td>{ open }</td>
+        <td>{ high }</td>
+        <td>{ low }</td>
+        <td>{ volume }</td>
+        <td>{ last }</td>
+        <td>{ volume_30day }</td>
       </Fragment>
     )
   };

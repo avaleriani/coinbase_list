@@ -4,6 +4,8 @@
   "private": true,
   "homepage": "https://avaleriani.github.io/coinbase_list/",
   "dependencies": {
+    "enzyme": "^3.8.0",
+    "enzyme-adapter-react-16": "^1.9.1",
     "node-sass": "^4.11.0",
     "prop-types": "^15.6.2",
     "react": "^16.8.0",

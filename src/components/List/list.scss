@@ -1,0 +1,41 @@
+.list {
+  margin: auto;
+
+  .status {
+    height: 15px;
+    width: 15px;
+    border-radius: 25px;
+    display: block;
+    margin: auto;
+  }
+
+  .status--online {
+    background-color: #62D315;
+  }
+
+  .status--offline {
+    background-color: #E76653;
+  }
+
+  thead {
+    background-color: azure;
+  }
+
+  tr {
+    padding: 25px;
+    background-color: #e2e2e2;
+  }
+
+  tr:nth-child(odd) {
+    background-color: #afafaf;
+  }
+
+  td {
+    min-width: 115px;
+    text-align: left;
+
+    img {
+      max-height: 25px;
+    }
+  }
+}

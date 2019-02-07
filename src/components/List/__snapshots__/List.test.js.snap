@@ -1,0 +1,52 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Component matches snapshot 1`] = `
+Array [
+  <table
+    className="list"
+  >
+    <thead>
+      <tr>
+        <th>
+          Name
+        </th>
+        <th>
+          Open
+        </th>
+        <th>
+          High
+        </th>
+        <th>
+          Low
+        </th>
+        <th>
+          Volume
+        </th>
+        <th>
+          Last
+        </th>
+        <th>
+          Volume 30 days
+        </th>
+        <th>
+          Status
+        </th>
+      </tr>
+    </thead>
+    <tbody />
+  </table>,
+  <div
+    className="spinner-container"
+  >
+     
+    <div
+      className="spinner"
+    >
+      <img
+        alt="spinner"
+        src="coins.gif"
+      />
+    </div>
+  </div>,
+]
+`;

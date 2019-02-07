@@ -1,4 +1,4 @@
-import React, { Fragment } from 'react';
+import React from 'react';
 import List from "../List/List";
 import Spinner from "../Spinner/Spinner";
 import fetchJsonHook from "../hooks/useFetchAPI";

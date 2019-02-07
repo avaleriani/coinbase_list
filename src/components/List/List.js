@@ -4,43 +4,38 @@ import './list.scss';
 import Spinner from "../Spinner/Spinner";
 
 class List extends Component {
-  constructor(props) {
+  constructor() {
     super();
     this.state = {
-      items: props.data
+      items: [],
+      allLoaded: false
     };
   }
 
   componentDidMount() {
-    this.getStatsFromProducts(this.props.data).then((result) => {
-      this.setState({ items: result });
-    })
+    this.getStatsFromProducts(this.props.data);
   }
 
   async getStatsFromProducts(products) {
+    const originalContext = this;
     let genObj = genFunc();
-    const productsStatsArr = [];
 
-    return new Promise(function(resolve, reject) {
-      try {
-        let interval = setInterval(() => {
-          let generatorResult = genObj.next();
+    let interval = setInterval(() => {
+      let generatorResult = genObj.next();
 
-          if (generatorResult.value) {
-            generatorResult.value.then(value => {
-              productsStatsArr.push(value);
-            });
-          }
-
-          if (generatorResult.done) {
-            clearInterval(interval);
-            resolve(productsStatsArr);
-          }
-        }, 300);
-      } catch(e) {
-        reject(e);
+      if (generatorResult.value) {
+        generatorResult.value.then(value => {
+          originalContext.setState({
+            items: [...originalContext.state.items, value]
+          })
+        });
       }
-    });
+
+      if (generatorResult.done) {
+        clearInterval(interval);
+        originalContext.setState({ allLoaded: true });
+      }
+    }, 300);
 
     function* genFunc() {
       for(let item of products) {
@@ -88,30 +83,33 @@ class List extends Component {
 
   render() {
     return (
-      <table className="list">
-        <thead>
-        <tr>
-          <th>Name</th>
-          <th>Open</th>
-          <th>High</th>
-          <th>Low</th>
-          <th>Volume</th>
-          <th>Last</th>
-          <th>Volume 30 days</th>
-          <th>Status</th>
-        </tr>
-        </thead>
-        <tbody>
-        { this.state.items.map((item) => {
-          return <tr key={ `row${ item.id }` }>
-            <td>{ item.display_name }</td>
-            { this.displayStats(item.stats) }
-            <td>{ this.displayStatus(item.status) }</td>
+      <Fragment>
+        <table className="list">
+          <thead>
+          <tr>
+            <th>Name</th>
+            <th>Open</th>
+            <th>High</th>
+            <th>Low</th>
+            <th>Volume</th>
+            <th>Last</th>
+            <th>Volume 30 days</th>
+            <th>Status</th>
           </tr>
-        })
-        }
-        </tbody>
-      </table>
+          </thead>
+          <tbody>
+          { this.state.items.map((item) => {
+            return <tr key={ `row-${ item.id }` }>
+              <td>{ item.display_name }</td>
+              { this.displayStats(item.stats) }
+              <td>{ this.displayStatus(item.status) }</td>
+            </tr>
+          })
+          }
+          </tbody>
+        </table>
+        <div className="spinner-container"> { this.state.allLoaded ? null : <Spinner/> }</div>
+      </Fragment>
     );
   }
 }
